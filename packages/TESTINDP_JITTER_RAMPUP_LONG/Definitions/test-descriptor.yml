@@ -4,7 +4,7 @@ description: "Performance test for mqtt broker"
 descriptor_schema: https://raw.githubusercontent.com/sonata-nfv/tng-schema/master/test-descriptor/testdescriptor-schema.yml
 name: "test-industrial-pilot-ns1-jitter-rampup-long"
 vendor: "eu.5gtango.egm"
-version: '0.1'
+version: '0.3'
 
 service_platforms:
   - "SONATA"
@@ -40,7 +40,7 @@ phases:
           value: '2020'   
       - id: publisher
         description: "A service initial configuration container"
-        image: "easyglobalmarket/mqtt-publisher-rampup"
+        image: "easyglobalmarket/mqtt-latency"
         name: publisher
         parameters:
         - key: IP
@@ -56,7 +56,7 @@ phases:
         - key: CLIENTS
           value: '1'
         - key: COUNT
-          value: '1'     
+          value: '100'     
   - id: exercise
     steps:
     - command: /bin/sh
